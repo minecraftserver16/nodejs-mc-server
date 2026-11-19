@@ -6,25 +6,29 @@ runtime.
 
 ## Current status
 
-The current milestone implements the TCP transport, Minecraft packet framing,
-handshake parsing, server-list status response, and ping/pong exchange. It does
-**not** implement gameplay login, authentication, players, worlds, chunks, or
-gameplay packets yet; connection attempts to enter the world are explicitly
-refused. Do not treat this milestone as a playable Minecraft server.
+The server supports Minecraft Java Edition 1.21.11 and can authenticate players,
+spawn them into a generated flat plains world, stream chunks around them, and
+update the streamed area as they move. The default view distance is 32 chunks
+in each direction.
+
+This is an early playable prototype, not a complete survival server. World
+changes are not persisted, and block interaction, inventory, entities, crafting,
+and survival simulation are not implemented yet.
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 22 or newer
 
 ## Run
 
 ```sh
+npm install
 npm start
 ```
 
 By default, the server listens on port `25565`. Edit `config.json` to change
-the server name, port, player limit, world settings, or authentication mode.
-The advertised protocol is configured for Minecraft Java Edition 1.21.11.
+the server name, port, player limit, view and simulation distances, or
+authentication mode. Online authentication is enabled by default.
 
 Run the test suite with:
 

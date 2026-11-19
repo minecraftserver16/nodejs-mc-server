@@ -22,8 +22,8 @@ async function loadConfig() {
   if (!Number.isInteger(config.maxPlayers) || config.maxPlayers < 1) {
     throw new RangeError('config.maxPlayers must be a positive integer');
   }
-  if (!Number.isInteger(config.viewDistance) || config.viewDistance < 2) {
-    throw new RangeError('config.viewDistance must be an integer of at least 2');
+  if (!Number.isInteger(config.viewDistance) || config.viewDistance < 2 || config.viewDistance > 32) {
+    throw new RangeError('config.viewDistance must be an integer from 2 to 32');
   }
   if (!Number.isInteger(config.simulationDistance) || config.simulationDistance < 2) {
     throw new RangeError('config.simulationDistance must be an integer of at least 2');
@@ -48,7 +48,7 @@ async function startServer() {
   const config = await loadConfig();
   const server = createMinecraftServer(config);
   const address = await server.listen();
-  console.log(`${config.serverName} status server listening on port ${address.port}`);
+  console.log(`${config.serverName} server listening on port ${address.port}`);
 
   let stopping = false;
   const stop = async (signal) => {
