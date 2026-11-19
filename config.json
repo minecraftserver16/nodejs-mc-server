@@ -1,0 +1,11 @@
+{
+  "serverName": "PureNodeMC",
+  "serverPort": 25565,
+  "maxPlayers": 20,
+  "viewDistance": 8,
+  "simulationDistance": 6,
+  "defaultGamemode": "survival",
+  "difficulty": "normal",
+  "worldSeed": "purenodemc",
+  "onlineMode": true
+}
